@@ -1,9 +1,11 @@
+/* regole generali */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* blocco sfondo verde */
 #top {
   height: 100px;
   width: 100%;
@@ -11,15 +13,17 @@
   background-color: rgb(0, 153, 136);
 }
 
+/* blocco sfondo grigio */
 #bottom {
   height: calc(100vh - 100px);
   position: relative;
   background-color: rgb(216, 219, 211);
 }
 
+/* regole schermata whatsapp */
 .container {
   height: 200px;
-  width: 900px;
+  width: 85%;
   position: absolute;
   top: 30%;
   left: 50%;
@@ -28,35 +32,185 @@
   z-index: 999;
 }
 
+/* regole colonna sinistra */
 #column-left {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 35%;
   height: calc(100vh - 30%);
   border: 1px solid black;
+  background-color: white;
 }
 
+/* regole colonna destra */
 #column-right {
-  width: calc(100% - 25%);
+  width: calc(100% - 35%);
   height: calc(100vh - 30%);
   border: 1px solid black;
 }
 
-.item {
-  width: 100%;
-  height: 100px;
-  border: 1px solid black;
-}
-
+/* regole blocco chat */
 .item-container {
   overflow: auto;
-  width: 100%;
-  height: 100px;
-  border: 1px solid black;
+  height: 50%;
+  background-color: white;
 }
 
+/* regole blocco chat aperta */
 .style-right {
   background-image: url(../img/mine.jpg);
-  height: calc(100% - 200px);
+  height: calc(100% - 30%);
   overflow: auto;
+}
+
+/* regole blocco utente*/
+.head-left {
+  background-color: rgb(234, 234, 234);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 15%;
+}
+
+.item-flex-left  {
+  width: 70%;
+  display: flex;
+  align-items: center;
+}
+
+.item-flex-left > img {
+  width: 50px;
+  border-radius: 50px;
+  margin-right: 5px;
+}
+
+.item-flex-right {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.fas, .fa {
+  color: grey;
+  margin: 0 10px;
+}
+
+.fas, .fa:hover {
+  cursor: pointer;
+}
+
+#style-img:hover {
+  cursor: pointer;
+}
+
+/* regole blocco notifiche */
+#notifiche {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(118, 220, 255);
+}
+
+.notice-span {
+  display: block;
+}
+
+.fa-bell-slash {
+  border-radius: 100px;
+  padding: 10px;
+  background-color: white;
+  color:rgb(118, 220, 255);
+}
+
+#style-span-notice {
+  text-decoration: underline;
+  color: rgb(49, 91, 106);
+}
+
+#style-span-notice:hover {
+  cursor: pointer;
+}
+
+/* regole blocco search */
+.input {
+  display: flex;
+  padding: 10px;
+  background-color: rgb(235, 236, 236);
+}
+
+.style-input {
+  width: 100%;
+  border: none;
+  height: 30px;
+  padding: 10px;
+}
+
+#input-search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 30px;
+}
+
+/* regole blocco chat attive */
+
+.chat {
+  display: flex;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+.chat img {
+  max-width: 20%;
+  border-radius: 50px;
+  margin-right: 5px;
+}
+
+.chat-left {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.chat-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+.style-chat {
+  font-size: 12px;
+  display: block;
+  color: grey;
+}
+
+/* regole blocco utente chat aperta */
+
+.head-right {
+  background-color: rgb(234, 234, 234);
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* regole blocco messaggio input */
+#item-fix {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  background-color: rgb(244, 238, 233);
+  height: 15%;
+}
+
+.item-fix-aside{
+  width: 10%;
+}
+
+.item-fix-mid {
+  width: 90%;
+}
+
+.style-item-fix {
+  text-align: center;
 }
