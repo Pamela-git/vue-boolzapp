@@ -61,6 +61,36 @@
   background-image: url(../img/mine.jpg);
   height: calc(100% - 30%);
   overflow: auto;
+  padding: 20px 0;
+}
+
+.send {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 5px 30px;
+}
+
+.received {
+  display: flex;
+  width: 100%;
+  padding: 5px 30px;
+}
+
+.item-send {
+  width: 30%;
+  padding: 10px;
+  background-color: rgb(203, 251, 179);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.item-received {
+  width: 30%;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  font-size: 15px;
 }
 
 /* regole blocco utente*/
@@ -160,6 +190,11 @@
   padding: 10px;
   border: 1px solid lightgrey;
 }
+
+.chat:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
 .chat img {
   max-width: 20%;
   border-radius: 50px;
@@ -213,4 +248,22 @@
 
 .style-item-fix {
   text-align: center;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
 }
