@@ -22,7 +22,7 @@
 
 /* regole schermata whatsapp */
 .container {
-  height: 200px;
+  height: calc(100vh - 100px);
   width: 85%;
   position: absolute;
   top: 30%;
@@ -37,7 +37,6 @@
   display: flex;
   flex-direction: column;
   max-width: 35%;
-  height: calc(100vh - 30%);
   background-color: white;
   z-index: 999;
 }
@@ -45,58 +44,14 @@
 /* regole colonna destra */
 #column-right {
   width: calc(100% - 35%);
-  height: calc(100vh - 30%);
   border-left: 1px solid lightgrey;
-}
-
-/* regole blocco chat */
-.item-container {
-  overflow: auto;
-  height: 50%;
-  background-color: white;
-}
-
-/* regole blocco chat aperta */
-.style-right {
-  background-image: url(../img/mine.jpg);
-  height: calc(100% - 30%);
-  overflow: auto;
-  padding: 20px 0;
-}
-
-.send {
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  padding: 5px 30px;
-}
-
-.received {
-  display: flex;
-  width: 100%;
-  padding: 5px 30px;
-}
-
-.item-send {
-  width: 30%;
-  padding: 10px;
-  background-color: rgb(203, 251, 179);
-  border-radius: 10px;
-  font-size: 15px;
-}
-
-.item-received {
-  width: 30%;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  font-size: 15px;
 }
 
 /* regole blocco utente*/
 .head-left {
   background-color: rgb(234, 234, 234);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
   height: 15%;
@@ -108,7 +63,7 @@
   align-items: center;
 }
 
-.item-flex-left > img {
+.head-img > img {
   max-width: 50px;
   border-radius: 50px;
   margin-right: 5px;
@@ -180,7 +135,14 @@
   display: flex;
   align-items: center;
   background-color: white;
-  height: 30px;
+  max-height: 30px;
+}
+
+/* regole blocco chat singole*/
+.item-container {
+  overflow: auto;
+  background-color: white;
+  max-height: 50%;
 }
 
 /* regole blocco chat attive */
@@ -228,14 +190,60 @@
   padding: 10px;
 }
 
+/* regole blocco chat aperta */
+.style-container-chat {
+  background-image: url(../img/mine.jpg);
+  height: calc(100% - 30%);
+  overflow: auto;
+  padding: 20px 0;
+}
+
+.send {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 5px 30px;
+}
+
+.received {
+  display: flex;
+  width: 100%;
+  padding: 5px 30px;
+}
+
+.item-send {
+  width: 30%;
+  padding: 10px;
+  background-color: rgb(203, 251, 179);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.item-received {
+  width: 30%;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.hour {
+  display: block;
+  font-size: 12px;
+  text-align: right;
+  color: grey;
+  margin-top: 5px;
+}
+
 /* regole blocco messaggio input */
 #item-fix {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: sticky;
+  position: fixed;
   background-color: rgb(244, 238, 233);
   height: 15%;
+  width: calc(100% - 35%);
 }
 
 .item-fix-aside{
