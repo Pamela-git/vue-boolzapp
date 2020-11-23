@@ -12,7 +12,7 @@
       <!-- blocco verde di sfondo -->
       <div id="top">
         <!-- contenitore centrato schermata whatsapp -->
-        <div class="container">
+        <div id="container">
           <!-- blocco sinistro -->
           <div id="column-left">
             <!-- blocco utente -->
@@ -22,7 +22,7 @@
                   <img id="style-img" src="img/avatar_io.jpg" alt="">
                 </div>
                 <div>
-                <span> <strong>Pippa Rossi</strong> </span>
+                <span> <strong>Pippa Rossi</strong></span>
                 </div>
               </div>
               <div class="item-flex-right">
@@ -55,58 +55,18 @@
             <!-- blocco chat -->
             <div class="item-container">
               <!-- blocco singola chat -->
-              <div class="chat">
+              <!-- lascio una classe statica mentre aggiungo una classe solo se l'indice corrisponde all'indice dell'oggetto selezionato -->
+              <!-- creo ciclo v-for per stampare a schermo tutti gli elementi dell'array chat -->
+              <div class="chat" :class="{'active': index === indexChat}" v-for="(element, index) in chat" @click="selectcontact(index)">
                 <div class="chat-left">
-                  <img id="style-img" src="img/avatar_1.jpg" alt="">
+                  <img id="style-img" :src="element.img" alt="">
                   <div>
-                    <span> <strong>Michele</strong> </span>
-                    <span class="style-chat">sta scrivendo...</span>
+                    <span> <strong>{{element.name}}</strong> </span>
+                    <span class="style-chat">{{element.message[element.message.length -1].text}}</span>
                   </div>
                 </div>
                 <div class="chat-right">
-                  <span class="style-chat">20/11/2020 10:52:03</span>
-                </div>
-              </div>
-            <!-- blocco singola chat -->
-              <div class="chat">
-                <div class="chat-left">
-                  <img id="style-img" src="img/avatar_2.jpg" alt="">
-                  <div>
-                    <span> <strong>Fabio</strong> </span>
-                    <span class="style-chat">sta scrivendo...</span>
-                  </div>
-                </div>
-                <div class="chat-right">
-                  <span class="style-chat">20/11/2020 10:52:03</span>
-                </div>
-              </div>
-              <!-- blocco singola chat -->
-              <div class="chat">
-                <div class="chat-left">
-                  <img id="style-img" src="img/avatar_6.jpg" alt="">
-                  <div>
-                    <span> <strong>Valeriana</strong> </span>
-                    <span class="style-chat">sta scrivendo...</span>
-                  </div>
-                </div>
-                <div class="chat-right">
-                  <span class="style-chat">20/11/2020 10:52:03</span>
-
-                </div>
-
-              </div>
-              <!-- blocco singola chat -->
-              <div class="chat">
-                <div class="chat-left">
-                  <img id="style-img" src="img/avatar_4.jpg" alt="">
-                  <div>
-                    <span> <strong>Luiso</strong> </span>
-                    <span class="style-chat">sta scrivendo...</span>
-                  </div>
-                </div>
-                <div class="chat-right">
-                  <span class="style-chat">20/11/2020 10:52:03</span>
-
+                  <span class="style-chat"></span>
                 </div>
               </div>
 
@@ -122,11 +82,10 @@
             <div class="head-right">
               <div class="item-flex-left">
                 <div class="head-img">
-                  <img id="style-img" src="img/avatar_4.jpg" alt="">
+                  <img id="style-img" :src="chat[indexChat].img" alt="">
                 </div>
-
                 <div>
-                  <span> <strong>Luiso</strong> </span>
+                  <span> <strong>{{chat[indexChat].name}}</strong> </span>
                   <span class="style-chat">Ultimo accesso oggi 20/11/2020 alle 12:01:32</span>
                 </div>
               </div>
@@ -138,41 +97,11 @@
             </div>
             <!-- blocco conversazione -->
             <div class="style-container-chat">
-
-              <div class="send">
-                <div class="item-send">
-                  <p>Ciao come stai?</p>
-                  <span class="hour"> 22/11/2020 16:35</span>
-                </div>
-              </div>
-
-              <div class="send">
-                <div class="item-send">
-                  <p>Ci vediamo domani?</p>
-                  <span class="hour"> 22/11/2020 16:35</span>
-                </div>
-              </div>
-
-              <div class="received">
-                <div class="item-received">
-                  <p>Ciao tutto bene tu? Si volentieri!</p>
-                  <span class="hour"> 22/11/2020 16:35</span>
-                </div>
-              </div>
-
-              <div class="send">
-                <div class="item-send">
-                  <p>Anche io tutto bene!
-                    alle 21?
-                  </p>
-                  <span class="hour"> 22/11/2020 16:35</span>
-                </div>
-              </div>
-
-              <div class="received">
-                <div class="item-received">
-                  <p>Perfetto!</p>
-                  <span class="hour"> 22/11/2020 16:35</span>
+              <!-- attraverso una condizione verifico se si tratta di un messaggio inviato o ricevuto e a seconda del risultato assegna una classe -->
+              <div :class="[ message.status === 'item-received' ? 'received' : 'send']" v-for="(message, i) in chat[indexChat].message">
+                <div :class="message.status">
+                  <p>{{message.text}}</p>
+                  <span class="hour">{{message.day}}</span>
                 </div>
               </div>
 

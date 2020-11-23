@@ -21,7 +21,7 @@
 }
 
 /* regole schermata whatsapp */
-.container {
+#container {
   height: calc(100vh - 100px);
   width: 85%;
   position: absolute;
@@ -126,7 +126,7 @@
 
 .style-input {
   width: 100%;
-  border: none;
+  border: 0;
   height: 30px;
   padding: 10px;
 }
@@ -151,6 +151,10 @@
   display: flex;
   padding: 10px;
   border-bottom: 1px solid lightgrey;
+}
+
+.active {
+  background-color: lightgrey;
 }
 
 .chat:hover {
@@ -200,8 +204,8 @@
 
 .send {
   display: flex;
-  width: 100%;
   justify-content: flex-end;
+  width: 100%;
   padding: 5px 30px;
 }
 
@@ -212,15 +216,16 @@
 }
 
 .item-send {
-  width: 30%;
+  max-width: 80%;
   padding: 10px;
   background-color: rgb(203, 251, 179);
   border-radius: 10px;
   font-size: 15px;
+
 }
 
 .item-received {
-  width: 30%;
+  max-width: 80%;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
@@ -233,6 +238,7 @@
   text-align: right;
   color: grey;
   margin-top: 5px;
+  margin-left: 20px;
 }
 
 /* regole blocco messaggio input */
