@@ -6,6 +6,7 @@ var app = new Vue({
 el: '#container',
 data: {
   indexChat: 0,
+  newmsg: "",
   chat: [
     {
       name: "Fabio",
@@ -82,9 +83,35 @@ data: {
 
 },
 methods: {
-  // funzione per collegare chat selezionata al blocco chat aperta
+    // funzione per collegare chat selezionata al blocco chat aperta
     selectcontact(index) {
       this.indexChat = index;
     },
-  },
-});
+    // metodo per estrapolare la data e l'ora correnti
+    currentday: function () {
+      var today = new Date();
+      var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+      var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      var dateTime = date+' '+time;
+      return dateTime;
+    },
+    //metodo per pushare il nuovo oggetto relativo all'input
+    newtext: function() {
+      this.chat[this.indexChat].message.push({
+      text: this.newmsg,
+      day: this.currentday(),
+      status: "item-send"
+      }),
+      this.newmsg = "";
+      //funzione per messaggio automatico dopo un secondo
+      setTimeout(function () {
+        this.chat[this.indexChat].message.push({
+        text: "ok",
+        day: this.currentday(),
+        status: "item-received"
+        });
+      }, 1000)
+    }
+  }
+
+})
