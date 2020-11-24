@@ -103,15 +103,28 @@ methods: {
       status: "item-send"
       }),
       this.newmsg = "";
-      //funzione per messaggio automatico dopo un secondo
-      setTimeout(function () {
-        this.chat[this.indexChat].message.push({
-        text: "ok",
-        day: this.currentday(),
-        status: "item-received"
-        });
-      }, 1000)
+      //funzione per messaggio automatico dopo un secondo:
+      // setTimeout(function () {
+      //   app.chat[app.indexChat].message.push({
+      //   text: "ok",
+      //   day: app.currentday(),
+      //   status: "item-received"
+      //   });
+      // }, 1000)
+    },
+    // messaggio automatico
+    messaggioauto: function () {
+      this.chat[this.indexChat].message.push({
+      text: "ok",
+      day: this.currentday(),
+      status: "item-received"
+      })
+    },
+    // funzione che parte dopo un sec
+    timeout: function () {
+      setTimeout(this.messaggioauto, 1000)
     }
+
   }
 
 })
