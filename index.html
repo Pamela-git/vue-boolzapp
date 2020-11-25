@@ -48,7 +48,7 @@
               <div id="input-search">
                 <i class="fa fa-search" id="input-search"></i>
               </div>
-              <input type="search" class="style-input" placeholder="Cerca o inizia una nuova chat">
+              <input type="search" class="style-input" placeholder="Cerca o inizia una nuova chat" v-model="searchchat" @keyup="search()">
             </div>
             <!-- fine blocco ricerca -->
 
@@ -57,11 +57,11 @@
               <!-- blocco singola chat -->
               <!-- lascio una classe statica mentre aggiungo una classe solo se l'indice corrisponde all'indice dell'oggetto selezionato -->
               <!-- creo ciclo v-for per stampare a schermo tutti gli elementi dell'array chat -->
-              <div class="chat" :class="{'active': index === indexChat}" v-for="(element, index) in chat" @click="selectcontact(index)">
+              <div class="chat" :class="{'active': index === indexChat}" v-for="(element, index) in chat" @click="selectcontact(index)" v-if="element.show">
                 <div class="chat-left">
                   <img id="style-img" :src="element.img" alt="">
                   <div>
-                    <span> <strong>{{element.name}}</strong> </span>
+                    <span> <strong>{{element.name}}</strong></span>
                     <span class="style-chat">{{element.message[element.message.length -1].text}}</span>
                   </div>
                 </div>
@@ -100,7 +100,18 @@
               <!-- attraverso una condizione verifico se si tratta di un messaggio inviato o ricevuto e a seconda del risultato assegna una classe -->
               <div :class="[ item.status === 'item-received' ? 'received' : 'send']" v-for="(item, i) in chat[indexChat].message">
                 <div :class="item.status">
-                  <p>{{item.text}}</p>
+                  <div class="drop">
+                    <p>{{item.text}} <i class="fa fa-angle-down" @click="showdrop(i)"></p></i>
+                    <nav class="dropdown" :class="item.novisibledrop">
+                      <ul>
+                        <li class="no-style"> Info </li>
+                        <li class="no-style" @click="removemessage(i)"> Elimina </li>
+                      </ul>
+                    </nav>
+                  </div>
+
+
+
                   <span class="hour">{{item.day}}</span>
                 </div>
               </div>
