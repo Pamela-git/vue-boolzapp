@@ -97,13 +97,17 @@ methods: {
     },
     //metodo per pushare il nuovo oggetto relativo all'input
     newtext: function() {
-      this.chat[this.indexChat].message.push({
-      text: this.newmsg,
-      day: this.currentday(),
-      status: "item-send"
-      }),
-      this.newmsg = "";
-      //funzione per messaggio automatico dopo un secondo:
+      if (this.newmsg === "") {
+
+      } else {
+        this.chat[this.indexChat].message.push({
+        text: this.newmsg,
+        day: this.currentday(),
+        status: "item-send"
+        }),
+        this.newmsg = "";
+      }
+      //funzione per messaggio automatico dopo un secondo
       // setTimeout(function () {
       //   app.chat[app.indexChat].message.push({
       //   text: "ok",
@@ -114,11 +118,16 @@ methods: {
     },
     // messaggio automatico
     messaggioauto: function () {
-      this.chat[this.indexChat].message.push({
-      text: "ok",
-      day: this.currentday(),
-      status: "item-received"
-      })
+      if (this.newmsg === "") {
+
+      } else {
+        this.chat[this.indexChat].message.push({
+        text: "ok",
+        day: this.currentday(),
+        status: "item-received"
+        })
+      }
+
     },
     // funzione che parte dopo un sec
     timeout: function () {
