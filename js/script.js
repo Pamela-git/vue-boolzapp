@@ -99,7 +99,6 @@ data: {
 
 },
 methods: {
-    // funzione per collegare chat selezionata al blocco chat aperta
     selectcontact(index) {
       this.indexChat = index;
     },
@@ -124,51 +123,36 @@ methods: {
         }),
         this.newmsg = "";
       }
-      //funzione per messaggio automatico dopo un secondo, mettere app oppure usare una arrow function perchè il this diventa l'oggetto della funzione anonima
-      // setTimeout(function () {
-      //   app.chat[app.indexChat].message.push({
-      //   text: "ok",
-      //   day: app.currentday(),
-      //   status: "item-received"
-      //   });
-      // }, 1000)
-    },
-    // messaggio automatico
-    messaggioauto: function () {
+      //funzione per messaggio automatico dopo un secondo (usare arrow function o mettere app al posto di this)
+      setTimeout(() => {
         this.chat[this.indexChat].message.push({
         text: "ok",
         day: this.currentday(),
         status: "item-received",
         novisibledrop: "novisible"
-        })
-    },
-    // funzione che parte dopo un sec
-    timeout: function () {
-      setTimeout(this.messaggioauto, 1000)
+        });
+      }, 1000)
     },
     //funzione per cercare il nome utente (milestone 4)
-    search() {
-      // element è l'elemento dell'array sul quale stiamo ad ogni giro
+    search: function() {
       this.chat.forEach((element, index) => {
-        // se l'elemento di quel momento con proprietà name matcha con il valore dell'input inserito dall'utente,
-        // match confronta la stringa della proprietà name con cià che gli viene passato tra parentesi e ritorna ciò che corrisponde
         if (element.name.toLowerCase().match(this.searchchat.toLowerCase())) {
-          element.show = true //allora la proprietà show di quell'elemento rimane true
+          element.show = true;
         } else {
-          element.show = false //altrimenti la setti in false in modo che non si vedano
+          element.show = false;
         }
       })
     },
-    // per far vedere il dropdown
-    showdrop: function (i) {
+    // per far vedere il dropdown (bonus)
+    showdrop(i) {
       if (this.chat[this.indexChat].message[i].novisibledrop === "novisible") {
         this.chat[this.indexChat].message[i].novisibledrop = "visible"
       } else {
         this.chat[this.indexChat].message[i].novisibledrop = "novisible"
       }
     },
-    // per rimuovere il messaggio
-    removemessage: function (el) {
+    // per rimuovere il messaggio (bonus)
+    removemessage(el) {
       this.chat[this.indexChat].message.splice(el, 1);
     }
 
