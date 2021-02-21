@@ -60,7 +60,7 @@ data: {
       show: true,
       message: [
         {
-          text: "Hai visto Sucker Punch?",
+          text: "Hai visto Harry Potter?",
           status:"item-send",
           day: "21/11/2020 23:30:01",
           novisibledrop: "novisible",
@@ -75,7 +75,7 @@ data: {
       ],
     },
     {
-      name: "Luisa",
+      name: "Paolo",
       img: "img/avatar_4.jpg",
       show: true,
       message: [
@@ -86,7 +86,7 @@ data: {
           novisibledrop: "novisible",
         },
         {
-          text: "Mmm non so hai qualcosa di strano",
+          text: "Si, dove?",
           status: "item-send",
           day: "21/11/2020 21:30:30",
           novisibledrop: "novisible",
